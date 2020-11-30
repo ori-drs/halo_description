@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<robot name="alphasense" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:macro name="alphasense" params="parent *origin name:=alphasense">
+  <joint name="${parent}_to_alphasense" type="fixed">
+    <xacro:insert_block name="origin"/>
+    <parent link="${parent}"/>
+    <child link="alphasense_mount"/>
+  </joint>
+
+  <link name="alphasense_mount">
+    <visual>
+      <geometry>
+        <mesh filename="package://halo_description/urdf/meshes/alphasense_simplified.dae" />
+      </geometry>
+    </visual>
+    <!-- TODO fix these inertial stuff -->
+    <inertial>
+      <origin xzy="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5" />
+      <inertia ixx="3.545e-4" ixy="6.051e-10" ixz="-3.736e-7" iyy="3.554e-4" iyz="-2.919e-9" izz="3.627e-4" />
+    </inertial>
+  </link>
+
+  </xacro:macro>
+</robot>
