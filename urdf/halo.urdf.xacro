@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<robot name="halo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find halo_description)/urdf/alphasense.urdf.xacro" />
+  <xacro:include filename="$(find rooster_description)/urdf/ouster.urdf.xacro" />
+  <link name="base" />
+  <xacro:alphasense parent="base">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:alphasense>
+  <link name="handle">
+    <visual>
+      <geometry>
+        <mesh filename="package://halo_description/urdf/meshes/halo_handle_simplified.dae" />
+      </geometry>
+      </visual>
+  </link>
+  <joint name="handle_to_base_mount" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="handle" />
+  </joint>
+
+  <xacro:os_device parent="base">
+    <origin xyz="-59e-3 0 51e-3" rpy="0 0 0"/>
+  </xacro:os_device>
+  
+</robot>
