@@ -6,9 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
+        - /RobotModel1
         - /TF1
         - /TF1/Frames1
-        - /OS1 Sensor Frame1
+        - /IMU Frame1
         - /Rooster Base1
         - /OS1 Lidar Frame1
         - /OS1 IMU Frame1
@@ -46,7 +48,7 @@ Visualization Manager:
       Cell Size: 1
       Class: rviz/Grid
       Color: 160; 160; 164
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.029999999329447746
         Value: Lines
@@ -59,8 +61,8 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
-      Value: true
-    - Alpha: 1
+      Value: false
+    - Alpha: 0.699999988079071
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -70,89 +72,30 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        alphasense_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         base:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_inertia:
+        handle:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_accel_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_accel_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_color_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_color_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_depth_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_depth_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_gyro_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_gyro_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_infra1_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_infra1_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_infra2_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_infra2_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        camera_link:
+        imu_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        os1_imu:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        os1_lidar:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        os1_sensor:
+        os_sensor:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        realsense_parent:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -176,9 +119,9 @@ Visualization Manager:
     - Class: rviz/Axes
       Enabled: true
       Length: 0.10000000149011612
-      Name: OS1 Sensor Frame
+      Name: IMU Frame
       Radius: 0.0010000000474974513
-      Reference Frame: os1_sensor
+      Reference Frame: imu_link
       Value: true
     - Class: rviz/Axes
       Enabled: true
@@ -217,7 +160,7 @@ Visualization Manager:
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 255; 255; 255
     Default Light: true
     Fixed Frame: base
     Frame Rate: 30
@@ -243,25 +186,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.31303200125694275
+      Distance: 0.3308335244655609
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0032137564849108458
-        Y: -0.04689624533057213
-        Z: 0.035758599638938904
+        X: -0.029154904186725616
+        Y: -0.012461299076676369
+        Z: 0.01724238134920597
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.604796826839447
+      Pitch: 0.3747970163822174
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.4254037141799927
+      Yaw: 0.8154042959213257
     Saved: ~
 Window Geometry:
   Displays:

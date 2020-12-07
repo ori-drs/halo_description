@@ -21,6 +21,23 @@
       <inertia ixx="3.545e-4" ixy="6.051e-10" ixz="-3.736e-7" iyy="3.554e-4" iyz="-2.919e-9" izz="3.627e-4" />
     </inertial>
   </link>
+  
+  <link name="imu_link">
+    <visual>
+      <geometry>
+        <box size="3e-3 2e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="6e-3 -8.55e-3 17.4e-3" rpy="${pi} 0 0"/>
+    <parent link="alphasense_mount" />
+    <child link="imu_link" />
+  </joint>
 
   </xacro:macro>
 </robot>
