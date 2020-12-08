@@ -39,5 +39,79 @@
     <child link="imu_link" />
   </joint>
 
+  <link name="cam_front_left">
+    <visual>
+      <geometry>
+        <box size="1e-3 1e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <link name="cam_front_right">
+    <visual>
+      <geometry>
+        <box size="1e-3 1e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <link name="cam_side_right">
+    <visual>
+      <geometry>
+        <box size="1e-3 1e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <link name="cam_side_left">
+    <visual>
+      <geometry>
+        <box size="1e-3 1e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- front right camera which is cam0 in alphasense driver -->
+  <joint name="front_right_cam_joint" type="fixed">
+    <origin xyz="0.0438 0.0485 -0.0109" rpy="1.5708 0.0043 1.5675 "/>
+    <parent link="imu_link" />
+    <child link="cam_front_right" />
+  </joint>
+
+  <!-- front left camera which is cam1 in alphasense driver -->
+  <joint name="front_left_cam_joint" type="fixed">
+    <origin xyz="0.0437 -0.0611 -0.0115" rpy=" 1.5715 -0.0042 1.5712 "/>
+    <parent link="imu_link" />
+    <child link="cam_front_left" />
+  </joint>
+
+  <!-- top camera which is cam2 in alphasense driver, haven't calibrated yet -->
+
+  <!-- side right camera which is cam3 in alphasense driver -->
+  <joint name="side_right_cam_joint" type="fixed">
+    <origin xyz="-0.006 0.061 -0.0104" rpy="1.571 0.0 3.14"/>
+    <parent link="imu_link" />
+    <child link="cam_side_right" />
+  </joint>
+
+  <!-- side left camera which is cam4 in alphasense driver -->
+  <joint name="side_left_cam_joint" type="fixed">
+    <origin xyz="-0.00789 -0.07720 -0.01356" rpy="1.5733 0.00443 -0.0052"/>
+    <parent link="imu_link" />
+    <child link="cam_side_left" />
+  </joint>
+
   </xacro:macro>
 </robot>
