@@ -101,7 +101,7 @@
 
   <!-- side right camera which is cam3 in alphasense driver -->
   <joint name="side_right_cam_joint" type="fixed">
-    <origin xyz="-0.006 0.061 -0.0104" rpy="1.571 0.0 3.14"/>
+    <origin xyz="-0.006 0.062 -0.0105" rpy="1.5691 -0.0061 3.1334"/>
     <parent link="imu_link" />
     <child link="cam_side_right" />
   </joint>
