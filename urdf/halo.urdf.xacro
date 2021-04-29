@@ -4,23 +4,23 @@
   <xacro:include filename="$(find ouster_description)/urdf/ouster.urdf.xacro" />
   <link name="base" />
   <xacro:alphasense parent="base">
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="32e-3 0.15e-3 47.7e-3" rpy="0 0 0" />
   </xacro:alphasense>
-  <link name="handle">
+  <link name="body">
     <visual>
       <geometry>
-        <mesh filename="package://halo_description/urdf/meshes/halo_handle_simplified.dae" />
+        <mesh filename="package://halo_description/urdf/meshes/halo_body.dae" />
       </geometry>
-      </visual>
+    </visual>
   </link>
-  <joint name="handle_to_base_mount" type="fixed">
+  <joint name="body_to_base_mount" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="base" />
-    <child link="handle" />
+    <child link="body" />
   </joint>
 
   <xacro:os_device parent="base">
-    <origin xyz="-59e-3 0 51e-3" rpy="0 0 0"/>
+    <origin xyz="1e-3 0 90.683e-3" rpy="0 0 0"/>
   </xacro:os_device>
   
 </robot>
