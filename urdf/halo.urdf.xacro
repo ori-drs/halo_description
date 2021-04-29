@@ -13,7 +13,7 @@
       </geometry>
     </visual>
   </link>
-  <joint name="handle_to_base_mount" type="fixed">
+  <joint name="body_to_base_mount" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="base" />
     <child link="body" />

@@ -34,7 +34,7 @@
     </visual>
   </link>
   <joint name="imu_joint" type="fixed">
-    <origin rpy="3.141592653589793 0 0" xyz="6e-3 -8.55e-3 17.4e-3"/>
+    <origin rpy="${pi} 0 0" xyz="6e-3 -8.55e-3 17.4e-3"/>
     <parent link="alphasense_mount"/>
     <child link="imu_link"/>
   </joint>
@@ -79,27 +79,29 @@
     </visual>
   </link>
   <!-- front right camera which is cam0 in alphasense driver -->
+  <!-- Calibration values obtained from kalibr with recorded rosbags which can be
+  found at https://drive.google.com/drive/folders/1KwWyPY2xfUV5Ubg3mr_DiBKgtUvIeSIb -->
   <joint name="front_right_cam_joint" type="fixed">
-    <origin rpy="1.5708 0.0043 1.5675 " xyz="0.0438 0.0485 -0.0109"/>
+    <origin rpy="1.5630 0.0066 1.5719" xyz="0.0462 0.0469 -0.0094"/>
     <parent link="imu_link"/>
     <child link="cam_front_right"/>
   </joint>
   <!-- front left camera which is cam1 in alphasense driver -->
   <joint name="front_left_cam_joint" type="fixed">
-    <origin rpy=" 1.5715 -0.0042 1.5712 " xyz="0.0437 -0.0611 -0.0115"/>
+    <origin rpy=" 1.5698 -0.0023 1.5609 " xyz="0.0457 -0.0642 -0.0102"/>
     <parent link="imu_link"/>
     <child link="cam_front_left"/>
   </joint>
   <!-- top camera which is cam2 in alphasense driver, haven't calibrated yet -->
   <!-- side right camera which is cam3 in alphasense driver -->
   <joint name="side_right_cam_joint" type="fixed">
-    <origin rpy="1.5691 -0.0061 3.1334" xyz="-0.006 0.062 -0.0105"/>
+    <origin rpy="1.5603 -0.0067 3.1407" xyz="-0.0058 0.0526 -0.0117"/>
     <parent link="imu_link"/>
     <child link="cam_side_right"/>
   </joint>
   <!-- side left camera which is cam4 in alphasense driver -->
   <joint name="side_left_cam_joint" type="fixed">
-    <origin rpy="1.5733 0.00443 -0.0052" xyz="-0.00789 -0.07720 -0.01356"/>
+    <origin rpy="1.5707 0.0045 -0.0076" xyz="-0.0072 -0.0754 -0.0113"/>
     <parent link="imu_link"/>
     <child link="cam_side_left"/>
   </joint>
