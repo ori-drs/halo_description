@@ -83,6 +83,25 @@
     </visual>
   </link>
 
+  <link name="os_imu">
+    <visual>
+      <geometry>
+        <box size="1e-3 1e-3 1e-3" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- obtained from Kalibr which is different with the datasheet-->
+  <joint name="os_imu_joint" type="fixed">
+    <origin xyz="-0.05072 -0.02064 -0.04077" rpy="3.13503 -0.00927 -0.00483"/>
+    <parent link="imu_link" />
+    <child link="os_imu" />
+  </joint>
+
+
   <!-- front right camera which is cam0 in alphasense driver -->
   <joint name="front_right_cam_joint" type="fixed">
     <origin xyz="0.0438 0.0485 -0.0109" rpy="1.5708 0.0043 1.5675 "/>
