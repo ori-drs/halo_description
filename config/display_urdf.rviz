@@ -111,6 +111,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        os_imu:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         os_sensor:
           Alpha: 1
           Show Axes: false
@@ -195,12 +200,12 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz/Axes
-      Enabled: false
-      Length: 0.10000000149011612
+      Enabled: true
+      Length: 0.029999999329447746
       Name: Axes
       Radius: 0.0010000000474974513
-      Reference Frame: imu_link
-      Value: false
+      Reference Frame: os_imu
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -245,9 +250,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4147961437702179
+      Pitch: 0.6197959780693054
       Target Frame: <Fixed Frame>
-      Yaw: 6.051767349243164
+      Yaw: 0.30358126759529114
     Saved: ~
 Window Geometry:
   Displays:
