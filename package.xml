@@ -13,6 +13,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>ouster_description</depend>
+  <depend>alphasense_description</depend>
   <depend>xacro</depend>
 
   <!-- The export tag contains other, unspecified, tags -->

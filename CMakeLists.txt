@@ -3,6 +3,7 @@ project(halo_description)
 
 find_package(catkin REQUIRED COMPONENTS
   ouster_description
+  alphasense_description
   xacro
 )
 
