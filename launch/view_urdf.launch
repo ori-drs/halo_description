@@ -4,6 +4,8 @@
   <arg name="simulation" default="true" />
 
   <include file="$(find halo_description)/launch/load.launch">
+    <arg name="simulation" value="$(arg simulation)"/>
+    <arg name="model" value="$(find halo_description)/urdf/halo_standalone.urdf.xacro" />
   </include>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />

@@ -1,46 +1,71 @@
 <?xml version="1.0" ?>
 <robot name="halo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- take the simulation as argument -->
+  <xacro:arg name="simulation" default="false" />
+  <!-- store the argument into property -->
+  <xacro:property name="simulation" value="$(arg simulation)"/>
+
   <xacro:include filename="$(find alphasense_description)/urdf/alphasense.urdf.xacro" />
   <xacro:include filename="$(find ouster_description)/urdf/ouster.urdf.xacro" />
-  <link name="base" />
-  <xacro:alphasense parent="base">
-    <origin xyz="32e-3 0.15e-3 47.7e-3" rpy="0 0 0" />
-  </xacro:alphasense>
+  <xacro:include filename="$(find hesai_description)/urdf/hesai.urdf.xacro" />
+  <xacro:macro name="halo_device" params="parent:=base
+                                          *origin
+                                          simulation:=false
+                                          hesai:=true">
 
- <!-- TODO move these calibrated values into a separate file loaded by the xacro -->
-  <link name="os_imu">
-    <visual>
-      <geometry>
-        <box size="1e-3 1e-3 1e-3" />
-      </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1" />
-      </material>
-    </visual>
-  </link>
 
-  <!-- obtained from Kalibr which is different with the datasheet-->
-  <joint name="os_imu_joint" type="fixed">
-    <origin xyz="-0.05072 -0.02064 -0.04077" rpy="3.13503 -0.00927 -0.00483"/>
-    <parent link="imu_link" />
-    <child link="os_imu" />
-  </joint>
 
-  <link name="body">
-    <visual>
-      <geometry>
-        <mesh filename="package://halo_description/urdf/meshes/halo_body.dae" />
-      </geometry>
-    </visual>
-  </link>
-  <joint name="body_to_base_mount" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="base" />
-    <child link="body" />
-  </joint>
+    <xacro:alphasense parent="halo_mount">
+      <origin xyz="32e-3 0.15e-3 47.7e-3" rpy="0 0 0" />
+    </xacro:alphasense>
+    
+    <!-- pass property as default argument for the os_device macro -->
+    
+    <xacro:unless value="${hesai}">
+      <xacro:os_device parent="halo_mount" simulation="${simulation}">
+        <origin xyz="1e-3 0 90.683e-3" rpy="0 0 0"/>
+      </xacro:os_device>
+    </xacro:unless>
+    
+    <xacro:if value="${hesai}">
+      <xacro:hesai_device parent="halo_mount" simulation="${simulation}">
+        <origin xyz="0.0 0.0 91.683e-3" rpy="0 0 0" />
+      </xacro:hesai_device>
+    </xacro:if>
+    
+    <!-- TODO move these calibrated values into a separate file loaded by the xacro -->
+    <link name="os_imu_kalibr">
+      <visual>
+        <geometry>
+          <box size="1e-3 1e-3 1e-3" />
+        </geometry>
+        <material name="black">
+          <color rgba="0 0 0 1" />
+        </material>
+      </visual>
+    </link>
+    
+    <!-- obtained from Kalibr which is different with the datasheet-->
+    <joint name="os_imu_joint" type="fixed">
+      <origin xyz="-0.05072 -0.02064 -0.04077" rpy="3.13503 -0.00927 -0.00483"/>
+      <parent link="alphasense_imu" />
+      <child link="os_imu_kalibr" />
+    </joint>
+    
+    <link name="halo_mount">
+      <visual>
+        <geometry>
+          <mesh filename="package://halo_description/urdf/meshes/halo_body.dae" />
+        </geometry>
+      </visual>
+    </link>
+    <joint name="parent_to_halo_mount" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${parent}" />
+      <child link="halo_mount" />
+    </joint>
+    
+  </xacro:macro>
 
-  <xacro:os_device parent="base">
-    <origin xyz="1e-3 0 90.683e-3" rpy="0 0 0"/>
-  </xacro:os_device>
   
 </robot>

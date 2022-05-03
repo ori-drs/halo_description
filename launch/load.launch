@@ -2,6 +2,7 @@
 
 <launch>
   <arg name="model" default="$(find halo_description)/urdf/halo.urdf.xacro" />
+  <arg name="simulation" default="false" />
 
-  <param name="robot_description" command="xacro $(arg model)" />
+  <param name="robot_description" command="xacro $(arg model) simulation:=$(arg simulation)" />
 </launch>
