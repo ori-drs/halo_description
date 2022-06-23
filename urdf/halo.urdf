@@ -6,7 +6,7 @@
 <robot name="halo">
   <link name="base"/>
   <joint name="base_to_alphasense" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="32e-3 0.15e-3 47.7e-3"/>
     <parent link="base"/>
     <child link="alphasense_mount"/>
   </joint>
@@ -105,20 +105,20 @@
     <parent link="imu_link"/>
     <child link="cam_side_left"/>
   </joint>
-  <link name="handle">
+  <link name="body">
     <visual>
       <geometry>
-        <mesh filename="package://halo_description/urdf/meshes/halo_handle_simplified.dae"/>
+        <mesh filename="package://halo_description/urdf/meshes/halo_body.dae"/>
       </geometry>
     </visual>
   </link>
   <joint name="handle_to_base_mount" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="base"/>
-    <child link="handle"/>
+    <child link="body"/>
   </joint>
   <joint name="base_to_ouster" type="fixed">
-    <origin rpy="0 0 0" xyz="-59e-3 0 51e-3"/>
+    <origin rpy="0 0 0" xyz="1e-3 0 90.683e-3"/>
     <parent link="base"/>
     <child link="os_sensor"/>
   </joint>
